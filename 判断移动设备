@@ -1,0 +1,29 @@
+<script>
+	/*my_equipment用于判断设备 my_equipment=0表示是电脑,1代表ipad,2代表Android 和 iPhone*/
+	var my_equipment = 0;
+	function fBrowserRedirect() {
+		var ua = navigator.userAgent.toLowerCase();
+		var Android = String(ua.match(/android/i)) == "android";
+		var iPad = String(ua.match(/ipad/i)) == "ipad";
+		var iPhone = String(ua.match(/iphone/i)) == "iphone";
+		if(Android || iPhone) {
+			//Android 和 iPhone
+			//console.log('Android 和 iPhone');
+			my_equipment = 2;
+		} else if(iPad) {
+			//iPad
+			//console.log('iPad');
+			my_equipment = 1;
+		} else {
+			//pc
+			//console.log('pc');
+			my_equipment = 0;
+		}
+	}
+	fBrowserRedirect();
+	// 浏览器窗口变化时的事件
+	window.onresize = function() {
+		fBrowserRedirect();
+	}
+	console.log(my_equipment + '---0表示是电脑,1代表ipad,2代表Android 和 iPhone');
+</script>
